@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="room101" model="resource.resource">
+            <field name="image" type="base64" file="calendar_resources/static/room101.jpg"/>
+            <field eval="1.0" name="time_efficiency"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">Room 101</field>
+            <field eval="1" name="active"/>
+            <field eval="1" name="display"/>
+            <field name="calendar_id" ref="resource.timesheet_group1"/>
+            <field name="resource_type">material</field>
+        </record>
+
+        <record id="room102" model="resource.resource">
+            <field name="image" type="base64" file="calendar_resources/static/room102.jpg"/>
+            <field eval="1.0" name="time_efficiency"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">Room 102</field>
+            <field eval="1" name="active"/>
+            <field eval="1" name="display"/>
+            <field name="calendar_id" ref="resource.timesheet_group1"/>
+            <field name="resource_type">material</field>
+        </record>
+
+        <record id="projector" model="resource.resource">
+            <field name="image" type="base64" file="calendar_resources/static/projector.jpg"/>
+            <field eval="0.8" name="time_efficiency"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="name">Projector</field>
+            <field eval="1" name="active"/>
+            <field eval="1" name="display"/>
+            <field name="calendar_id" ref="resource.timesheet_group1"/>
+            <field name="resource_type">material</field>
+        </record>
+
+    </data>
+</openerp>
