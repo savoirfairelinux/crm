@@ -27,4 +27,9 @@ from openerp import models, fields
 class calendar_event(models.Model):
     _inherit = 'calendar.event'
 
-    resource_ids = fields.Many2many('resource.resource', string='Resources')
+    resource_ids = fields.Many2many(
+        'resource.resource',
+        domain="[('display', '=', True)]",
+        string='Resources'
+    )
+
