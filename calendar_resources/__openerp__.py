@@ -30,23 +30,24 @@
     'category': 'CRM',
     'summary': 'New features to facilitate resources management with meetings',
     'description': """
-CRM Meeting Resources
-=====================
+Calendar Resources
+==================
 This module add new features to facilitate your resources management with your meetings :
-- improvement in resource.resource native object (image, note and boolean choice for using it in your calendars)
-- add a link between your calendars and your resources,
-- switch easily your calendar's views with attendees and resources,
-- add a new menu entry to display event by resources in several views (calendar, list and form)
+
+* improvement in resource.resource native object (image, note and boolean choice for using it in your calendars)
+* add a link between your calendars and your resources,
+* switch easily your calendar's views with attendees and resources,
+* add a new menu entry to display event by resources in several views (calendar, list and form)
 
 Note that the customer don't expect for this step :
-- any constraint between resources reservations in calendar,
-- any interface with calendar_google for the 'resource' object.
+
+* any constraint between resources reservations in calendar,
+* any interface with calendar_google for the 'resource' object.
 
 Contributors
 ------------
-
-    Jordi RIERA (jordi.riera@savoirfairelinux.com)
-    Bruno JOLIVEAU (bruno.joliveau@savoirfairelinux.com)
+* Jordi RIERA (jordi.riera@savoirfairelinux.com)
+* Bruno JOLIVEAU (bruno.joliveau@savoirfairelinux.com)
 
 More information
 ----------------
@@ -63,6 +64,9 @@ More information
     },
     'data': [
         'views/resource_view.xml',
+    ],
+    'demo': [
+        'demo/resource_demo.xml',
     ],
     'installable': True,
 }
