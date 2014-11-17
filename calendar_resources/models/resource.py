@@ -27,11 +27,12 @@ from openerp import models, fields
 class resource_resource(models.Model):
     _inherit = 'resource.resource'
 
+    name = fields.Char("Name", required=True, translate=True)
     image = fields.Binary(
         "Image",
         help="This field holds the image used as avatar for this contact,"
              " limited to 1024x1024px"
-    ),
-    display = fields.Boolean()
+    )
+    display = fields.Boolean(default=True)
     note = fields.Text()
 

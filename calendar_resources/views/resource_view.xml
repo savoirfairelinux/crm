@@ -6,23 +6,34 @@
             <field name="model">resource.resource</field>
             <field name="inherit_id" ref="resource.resource_resource_form"/>
             <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="user_id"
+                           attrs="{
+                           'required':[('resource_type','=','user')],
+                           'readonly':[('resource_type','=','material')],
+                           'invisible':[('resource_type','=','material')]
+                           }"
+                            />
+                </field>
                 <field name="name" position="replace"/>
-                <form position="after">
+                <xpath expr="//form/group" position="before">
                     <field name="image" widget='image' class="oe_avatar oe_left" options='{"preview_image": "image_medium"}'/>
                     <div class="oe_title">
                         <div class="oe_edit_only">
-                            <label for="name"/> (
+                            <label for="name"/>
                         </div>
                         <h1>
                             <field name="name" default_focus="1" placeholder="Name" />
                         </h1>
                     </div>
-                </form>
+                </xpath>
                 <field name="active" position="after">
                     <field name="display"/>
                 </field>
-                <xpath expr="//form/group" position="inside">
+                <xpath expr="//form/group" position="after">
+                    <group>
                     <field name="note"/>
+                   </group>
                 </xpath>
 
             </field>
