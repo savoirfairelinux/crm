@@ -32,4 +32,3 @@ class calendar_event(models.Model):
         domain="[('display', '=', True)]",
         string='Resources'
     )
-
