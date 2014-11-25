@@ -2,7 +2,7 @@
 #
 # OpenERP, Open Source Management Solution
 # This module copyright (C) 2013 Savoir-faire Linux
-#    (<http://www.savoirfairelinux.com>).
+# (<http://www.savoirfairelinux.com>).
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,11 +19,11 @@
 #
 
 import logging
+
 _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.DEBUG)
 from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT, \
     DEFAULT_SERVER_DATE_FORMAT
-
 
 from openerp import models, fields, api
 
@@ -32,9 +32,8 @@ class calendar_event(models.Model):
     _inherit = 'calendar.event'
 
     @api.model
-    def create(self, vals):
-        event = super(calendar_event, self).create(vals)
-        resource_calendar_leave_model = self.env['resource.calendar.leaves']
+    def _create_resource_calendar_leaves(self, event):
+        resource_calendar_leaves_model = self.env['resource.calendar.leaves']
         model_data_model = self.env['ir.model.data']
         resource_calendar = model_data_model.get_object(
             'calendar_resources', 'resource_calendar'
@@ -43,7 +42,7 @@ class calendar_event(models.Model):
         ids = []
         for resource in event.resource_ids:
             ids.append(
-                resource_calendar_leave_model.create(
+                resource_calendar_leaves_model.create(
                     {
                         'name': 'Meeting : {}'.format(event.name),
                         'calendar_id': resource_calendar.id,
@@ -55,11 +54,30 @@ class calendar_event(models.Model):
                 ).id
             )
 
-        event.write({'resource_calendar_leave_ids': ([6, 0, ids],)})
+        event.write({'resource_calendar_leaves_ids': ([6, 0, ids],)})
 
-        for leave in event.resource_calendar_leave_ids:
-            print 'date_from', leave.date_from
+        return event.resource_calendar_leaves_ids
+
+    @api.model
+    def create(self, vals):
+        """ Create the event then create resource leaves linked to the
+        resources used by the event.
+        """
+        event = super(calendar_event, self).create(vals)
+        self._create_resource_calendar_leaves(event)
         return event
+
+    @api.multi
+    def write(self, vals):
+        """ Update the leaves related to the event."""
+        # easier to delete all leaves currently related to the event,
+        # as otherwise we would have to test a lot of parameter.
+        for leaf in self.resource_calendar_leaves_ids:
+            leaf.unlink()
+
+        # and then just recreate them
+        self._create_resource_calendar_leaves(self)
+        return super(calendar_event, self).write(vals)
 
     resource_ids = fields.Many2many(
         'resource.resource',
@@ -67,7 +85,7 @@ class calendar_event(models.Model):
         string='Resources'
     )
 
-    resource_calendar_leave_ids = fields.Many2many(
+    resource_calendar_leaves_ids = fields.Many2many(
         'resource.calendar.leaves',
         string='Resources Calendar leaves'
     )
