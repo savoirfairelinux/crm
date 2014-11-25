@@ -13,6 +13,18 @@
                 <field name="allday" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
+                <field name="start_date" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </field>
+                <field name="stop_date" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </field>
+                <field name="start_datetime" position="attributes">
+                    <attribute name="attrs">{'invisible': False}</attribute>
+                </field>
+                <field name="stop_datetime" position="attributes">
+                    <attribute name="attrs">{'invisible': False}</attribute>
+                </field>
             </field>
         </record>
 
@@ -25,6 +37,12 @@
             <field name="arch" type="xml">
                 <field name="allday" position="attributes">
                     <attribute name="invisible">1</attribute>
+                </field>
+                <field name="start_date" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </field>
+                <field name="start_datetime" position="attributes">
+                    <attribute name="attrs">{'invisible': False}</attribute>
                 </field>
             </field>
         </record>
