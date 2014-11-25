@@ -51,8 +51,8 @@ class test_calendar_event(common.TransactionCase):
         return self.calendar_event_model.create(
             {
                 'name': 't_name',
-                'start_date': '2011-11-11 00:00:00',
-                'stop_date': '2011-11-11 00:00:00',
+                'start_datetime': '2011-11-11 00:00:00',
+                'stop_datetime': '2011-11-11 00:00:00',
                 'allday': True,
                 'resource_ids': (
                     [
