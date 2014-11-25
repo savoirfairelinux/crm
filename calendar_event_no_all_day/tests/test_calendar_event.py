@@ -5,8 +5,8 @@
 # (<http://www.savoirfairelinux.com>).
 #
 # This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
 #    License, or (at your option) any later version.
 #
 #    This program is distributed in the hope that it will be useful,
@@ -28,6 +28,11 @@ class test_calendar_event(common.TransactionCase):
 
     def test_all_day_false_after_create(self):
         event = self.calendar_event_model.create(
-            {'name': 't_name', 'allday': True, }
+            {
+                'name': 't_name',
+                'allday': True,
+                'start_datetime': '2011-11-11 00:00:00',
+                'stop_datetime': '2011-11-11 00:00:00',
+            }
         )
         self.assertFalse(event.allday)
