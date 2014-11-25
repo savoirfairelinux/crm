@@ -21,14 +21,16 @@
 import logging
 _logger = logging.getLogger(__name__)
 
-from openerp import models, fields
+from openerp import models, fields, api, tools
 
 
-class calendar_event(models.Model):
-    _inherit = 'calendar.event'
+class resource_calendar_leaves(models.Model):
+    """ Add a link to a calendar event."""
 
-    resource_ids = fields.Many2many(
-        'resource.resource',
-        domain="[('display', '=', True)]",
-        string='Resources'
+    _inherit = "resource.calendar.leaves"
+
+    calendar_event_id = fields.Many2one(
+        'calendar.event',
+        string='Event',
     )
+

@@ -9,7 +9,7 @@
             <field name="name">Room 101</field>
             <field eval="1" name="active"/>
             <field eval="1" name="display"/>
-            <field name="calendar_id" ref="resource.timesheet_group1"/>
+            <field name="calendar_id" ref="calendar_resources.resource_calendar"/>
             <field name="resource_type">material</field>
         </record>
 
@@ -20,7 +20,7 @@
             <field name="name">Room 102</field>
             <field eval="1" name="active"/>
             <field eval="1" name="display"/>
-            <field name="calendar_id" ref="resource.timesheet_group1"/>
+            <field name="calendar_id" ref="calendar_resources.resource_calendar"/>
             <field name="resource_type">material</field>
         </record>
 
@@ -31,7 +31,7 @@
             <field name="name">Projector</field>
             <field eval="1" name="active"/>
             <field eval="1" name="display"/>
-            <field name="calendar_id" ref="resource.timesheet_group1"/>
+            <field name="calendar_id" ref="calendar_resources.resource_calendar"/>
             <field name="resource_type">material</field>
         </record>
 

@@ -1,0 +1,57 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="resource_calendar_leave_with_event_form"
+                model="ir.ui.view">
+            <field name="name">resource.calendar.leaves: event field</field>
+            <field name="model">resource.calendar.leaves</field>
+            <field name="inherit_id" ref="resource.resource_calendar_leave_form"/>
+            <field name="arch" type="xml">
+                <field name="calendar_id" position="after">
+                    <field name="calendar_event_id"/>
+                </field>
+                    </field>
+
+
+        </record>
+        <record model="ir.ui.view" id="view_calendar_resources_calendar">
+            <field name="name">resource.calendar.leaves.calendar</field>
+            <field name="model">resource.calendar.leaves</field>
+            <field name="arch" type="xml">
+                <calendar color="resource_id"
+                          date_start="date_from"
+                          date_stop="date_to"
+                          string="Resource">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="action_calendar_resources" model="ir.actions.act_window">
+            <field name="name">Calendar by Resources</field>
+            <field name="res_model">resource.calendar.leaves</field>
+            <field name="view_mode">calendar,tree,form</field>
+            <field name="view_id" ref="view_calendar_resources_calendar"/>
+            <!--<field name="search_view_id" ref="view_calendar_event_search"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to schedule a new meeting.
+                </p>
+                <p>
+                    The calendar is shared between employees and fully
+                    integrated with
+                    other applications such as the employee holidays or the
+                    business
+                    opportunities.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Resources"
+                  id="mail_menu_calendar"
+                  parent="mail.mail_my_stuff"
+                  sequence="11"
+                  action="action_calendar_resources"/>
+
+    </data>
+</openerp>

@@ -58,7 +58,6 @@ More information
     'depends': [
         'resource',
         'calendar',
-        'calendar_event_no_all_day',
     ],
     'external_dependencies': {
         'python': [],
