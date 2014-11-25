@@ -16,13 +16,6 @@
                         <field name="resource_ids" widget="many2many_tags"
                                class="oe_inline"/>
                     </h2>
-                    <label for="resource_calendar_leave_ids" string="Resources Leaves"/>
-                    <h2>
-                    <field name="resource_calendar_leave_ids"
-                           widget="many2many_tags"
-                           readonly="1"
-                           class="oe_inline"/>
-                    </h2>
                 </xpath>
             </field>
         </record>
@@ -36,10 +29,6 @@
             <field name="arch" type="xml">
                 <field name="partner_ids" position="after">
                     <field name="resource_ids" widget="many2many_tags"/>
-                    <field name="resource_calendar_leave_ids"
-                           widget="many2many_tags"
-                           readonly="1"
-                           class="oe_inline"/>
                 </field>
             </field>
         </record>
