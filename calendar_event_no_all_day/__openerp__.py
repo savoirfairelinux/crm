@@ -28,10 +28,17 @@
     'website': 'http://www.savoirfairelinux.com',
     'license': 'AGPL-3',
     'category': 'CRM',
-    'summary': '',
+    'summary': 'Disable "all day" feature',
     'description': """
 Calendar Event No All Day
 =========================
+This module disable "all day" feature to force users to encode resources with
+datetime.
+
+Warning: be aware you might have warnings if you create event with only setting
+dates and no datetime because of the checks done against start and stop fields
+classic error message in this case:
+IntegrityError: null value in column "start" violates not-null constraint
 
 Contributors
 ------------

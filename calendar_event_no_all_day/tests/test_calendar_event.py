@@ -31,7 +31,7 @@ class test_calendar_event(common.TransactionCase):
             {
                 'name': 't_name',
                 'allday': True,
-                'start_datetime': '2011-11-11 00:00:00',
+                'start_date': '2011-11-11 00:00:00',
                 'stop_datetime': '2011-11-11 00:00:00',
             }
         )
