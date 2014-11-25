@@ -20,12 +20,8 @@
 
 import logging
 _logger = logging.getLogger(__name__)
-_logger.setLevel(logging.DEBUG)
-from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT, \
-    DEFAULT_SERVER_DATE_FORMAT
 
-
-from openerp import models, fields, api
+from openerp import models, api
 
 
 class calendar_event(models.Model):
@@ -33,42 +29,6 @@ class calendar_event(models.Model):
 
     @api.model
     def create(self, vals):
-        event = super(calendar_event, self).create(vals)
-        resource_calendar_leave_model = self.env['resource.calendar.leaves']
-        model_data_model = self.env['ir.model.data']
-        resource_calendar = model_data_model.get_object(
-            'calendar_resources', 'resource_calendar'
-        )
-
-        ids = []
-        for resource in event.resource_ids:
-            ids.append(
-                resource_calendar_leave_model.create(
-                    {
-                        'name': 'Meeting : {}'.format(event.name),
-                        'calendar_id': resource_calendar.id,
-                        'resource_id': resource.id,
-                        'date_from': event.start,
-                        'date_to': event.stop,
-                        'calendar_event_id': event.id,
-                    }
-                ).id
-            )
-
-        event.write({'resource_calendar_leave_ids': ([6, 0, ids],)})
-
-        for leave in event.resource_calendar_leave_ids:
-            print 'date_from', leave.date_from
-        return event
-
-    resource_ids = fields.Many2many(
-        'resource.resource',
-        domain="[('display', '=', True)]",
-        string='Resources'
-    )
-
-    resource_calendar_leave_ids = fields.Many2many(
-        'resource.calendar.leaves',
-        string='Resources Calendar leaves'
-    )
-
+        """Force the the allday value to be to False anytime."""
+        vals['allday'] = False
+        return super(calendar_event, self).create(vals)

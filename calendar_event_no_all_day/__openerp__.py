@@ -21,28 +21,17 @@
 ##############################################################################
 
 {
-    'name': 'Calendar Resources',
+    'name': 'Calendar Event No All Day',
     'version': '0.1',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
     'license': 'AGPL-3',
     'category': 'CRM',
-    'summary': 'New features to facilitate resources management with meetings',
+    'summary': '',
     'description': """
-Calendar Resources
-==================
-This module add new features to facilitate your resources management with your meetings :
-
-* improvement in resource.resource native object (image, note and boolean choice for using it in your calendars)
-* add a link between your calendars and your resources,
-* switch easily your calendar's views with attendees and resources,
-* add a new menu entry to display event by resources in several views (calendar, list and form)
-
-Note that the customer don't expect for this step :
-
-* any constraint between resources reservations in calendar,
-* any interface with calendar_google for the 'resource' object.
+Calendar Event No All Day
+=========================
 
 Contributors
 ------------
@@ -56,20 +45,15 @@ More information
 (support@savoirfairelinux.com)
 """,
     'depends': [
-        'resource',
         'calendar',
     ],
     'external_dependencies': {
         'python': [],
     },
     'data': [
-        'views/calendar_event_view.xml',
-        'views/resource_calendar_leaves_view.xml',
-        'views/resource_resource_view.xml',
-        'data/resource_calendar_data.xml',
+        'calendar_event_view.xml',
     ],
     'demo': [
-        'demo/resource_demo.xml',
     ],
     'installable': True,
 }

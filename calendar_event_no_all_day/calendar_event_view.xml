@@ -1,45 +1,30 @@
 <?xml version = "1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record id="view_calendar_resources_event_form" model="ir.ui.view">
-            <field name="name">Calendar: resources</field>
+        <record id="view_calendar_resources_no_all_day_form"
+                model="ir.ui.view">
+            <field name="name">Calendar: Remove all day</field>
             <field name="model">calendar.event</field>
             <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//label[@for='partner_ids']"
-                       position="attributes">
-                    <attribute name="class"></attribute>
-                </xpath>
-                <xpath expr="//div[@class='oe_title']" position="inside">
-                    <label for="resource_ids" string="Resources"/>
-                    <h2>
-                        <field name="resource_ids" widget="many2many_tags"
-                               class="oe_inline"/>
-                    </h2>
-                    <label for="resource_calendar_leave_ids" string="Resources Leaves"/>
-                    <h2>
-                    <field name="resource_calendar_leave_ids"
-                           widget="many2many_tags"
-                           readonly="1"
-                           class="oe_inline"/>
-                    </h2>
-                </xpath>
+                <label for="allday" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </label>
+                <field name="allday" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
             </field>
         </record>
 
-        <record id="view_calendar_resources_event_form_popup"
+        <record id="view_calendar_resources_no_all_day_form_popup"
                 model="ir.ui.view">
-            <field name="name">Calendar popup: resources</field>
+            <field name="name">Calendar popup: Remove all day</field>
             <field name="model">calendar.event</field>
             <field name="inherit_id"
                    ref="calendar.view_calendar_event_form_popup"/>
             <field name="arch" type="xml">
-                <field name="partner_ids" position="after">
-                    <field name="resource_ids" widget="many2many_tags"/>
-                    <field name="resource_calendar_leave_ids"
-                           widget="many2many_tags"
-                           readonly="1"
-                           class="oe_inline"/>
+                <field name="allday" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </field>
             </field>
         </record>
